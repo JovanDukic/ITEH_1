@@ -34,5 +34,15 @@ class User
 
     public static function login(User $user, mysqli $connection)
     {
+        $query = "SELECT ID FROM USER WHERE username = '$user->username' and password = '$user->password'";
+
+        return $connection->query($query);
+    }
+
+    public static function getGeneratedKey(mysqli $connection)
+    {
+        $query = "SELECT LAST_INSERT_ID() AS ID";
+
+        return $connection->query($query);
     }
 }

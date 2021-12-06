@@ -2,7 +2,7 @@ $(document).ready(function () {
 
     $("#registrationForm").submit(function (e) {
         e.preventDefault();
-        if ($("#username").val() && $("#password").val() && $("#firstname").val() && $("#lastname").val() && $("#age").val()) {
+        if ($("#username").val() && $("#password").val()) {
             sendRequset($(this));
         } else {
             alert("All fields are required!");
@@ -14,7 +14,7 @@ $(document).ready(function () {
         console.log("Serialization: " + $serialization);
 
         request = $.ajax({
-            url: "handler/register.php",
+            url: "handler/login.php",
             type: "POST",
             data: $serialization
         });
