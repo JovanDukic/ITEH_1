@@ -1,15 +1,10 @@
 <?php
 
 require "../database/databaseManager.php";
-require "../entity/CovidTest.php";
+require "../entity/Controller.php";
 
-session_start();
-
-$covidTests;
-
-if (isset($_SESSION["ID"])) {
-    $covidTests = CovidTest::loadTests($_SESSION["ID"], $connection);
-}
+Controller::loadCovidTests($connection);
+Controller::loadUserTests($connection);
 
 ?>
 
@@ -40,11 +35,19 @@ if (isset($_SESSION["ID"])) {
 
         <div class="title">Test results</div>
 
-        <div class="content">
+        <div class="toolbar">
+            <form>
+                <label for="search">Ambulance filter: </label>
+                <input type="text" name="search" id="search">
+            </form>
+        </div>
+
+        <div class="data">
             <table>
                 <thead>
                     <tr>
-                        <td>ID</td>
+                        <td>TestID</td>
+                        <td>UserID</td>
                         <td>Date</td>
                         <td>Type</td>
                         <td>Ambulance</td>
@@ -53,11 +56,12 @@ if (isset($_SESSION["ID"])) {
                 </thead>>
 
                 <tbody>
-                    <?php foreach ($covidTests as $covidTest => $value) { ?>
+                    <?php foreach (Controller::$userTests as $userTest => $value) { ?>
                         <tr>
                             <td><?php echo $value->ID ?></td>
+                            <td><?php echo $value->userID ?></td>
                             <td><?php echo $value->date ?></td>
-                            <td><?php echo $value->type ?></td>
+                            <td><?php echo CovidTest::getTypeFromID($value->testID) ?></td>
                             <td><?php echo $value->ambulance ?></td>
                             <td><?php echo $value->result ?></td>
                         </tr>

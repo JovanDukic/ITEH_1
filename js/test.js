@@ -21,6 +21,7 @@ $(document).ready(function () {
             } else {
                 alert("Testing has failed!");
             }
+            console.log(response);
         });
 
         request.fail(function (jqXHR, textStatus, error) {

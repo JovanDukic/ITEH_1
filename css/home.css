@@ -9,22 +9,29 @@
     height: 100vh;
     margin-left: 10%;
     margin-right: 10%;
-    margin-top: 10%;
+    margin-top: 5%;
+    margin-bottom: 20%;
     justify-items: center;
 }
 
-.content {
-    display: grid;
-    grid-template-columns: auto;
+.toolbar {
+    border: 1px solid black;
+    padding: 1%;
+    margin-bottom: 1%;
+}
+
+.data {
+    height: 100vh;
     text-align: center;
     padding: 1%;
-    margin-left: 10%;
-    margin-right: 10%;
+    border: 1px solid black;
+    overflow-y: scroll;
 }
 
 .title {
     margin-bottom: 1%;
     text-align: center;
+    font-size: 5em;
 }
 
 table {
