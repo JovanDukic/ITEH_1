@@ -1,12 +1,8 @@
 $(document).ready(function () {
 
-    $("#loginForm").submit(function (e) {
+    $("#testForm").submit(function (e) {
         e.preventDefault();
-        if ($("#username").val() && $("#password").val()) {
-            sendRequset($(this));
-        } else {
-            alert("All fields are required!");
-        }
+        sendRequset($(this));
     });
 
     sendRequset = function ($form) {
@@ -14,17 +10,16 @@ $(document).ready(function () {
         console.log("Serialization: " + $serialization);
 
         request = $.ajax({
-            url: "../handler/login.php",
+            url: "../handler/test.php",
             type: "POST",
             data: $serialization
         });
 
         request.done(function (response, textStatus, jqXHR) {
             if (response == "success") {
-                window.location.href = "../pages/home.php";
-                // redirectRequest();
+                alert("Test has been created!");
             } else {
-                alert("User does not exist!");
+                alert("Testing has failed!");
             }
         });
 
@@ -33,10 +28,5 @@ $(document).ready(function () {
         });
     };
 
-    redirectRequest = function () {
-        request = $.ajax({
-            url: "../handler/redirect.php",
-        });
-    };
 
 });

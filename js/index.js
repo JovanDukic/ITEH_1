@@ -2,7 +2,7 @@ $(document).ready(function () {
 
     $("#registrationForm").submit(function (e) {
         e.preventDefault();
-        if ($("#username").val() && $("#password").val() && $("#firstname").val() && $("#lastname").val() && $("#age").val()) {
+        if ($("#username").val() && $("#password").val() && $("#firstname").val() && $("#lastname").val() && $("#age").val() && $("#gneder").val()) {
             sendRequset($(this));
         } else {
             alert("All fields are required!");
@@ -22,6 +22,7 @@ $(document).ready(function () {
         request.done(function (response, textStatus, jqXHR) {
             if (response == "success") {
                 alert("You have been registered!");
+                redirectRequest();
             } else {
                 alert("Registration failed!");
             }
@@ -29,6 +30,12 @@ $(document).ready(function () {
 
         request.fail(function (jqXHR, textStatus, error) {
             alert("Error has occurred: " + error);
+        });
+    };
+
+    redirectRequest = function () {
+        request = $.ajax({
+            url: "handler/redirect.php",
         });
     };
 

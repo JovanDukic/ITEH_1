@@ -13,10 +13,9 @@ if (isset($_POST["username"]) && isset($_POST["password"])) {
     if (!empty($rs) && $rs->num_rows > 0) {
         while ($row = $rs->fetch_array()) {
             $_SESSION["ID"] = $row["ID"];
-            header("Location: home.");
-            exit();
+            echo "success";
         }
     } else {
-        echo "User does not exists!";
+        echo "failed";
     }
 }
