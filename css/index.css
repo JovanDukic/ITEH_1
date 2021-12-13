@@ -9,11 +9,15 @@
     margin-right: 25%;
     padding: 3%;
     justify-content: space-evenly;
+    animation: entrance 2s ease 0s 1 normal none;
 }
 
 .title {
+    position: relative;
     margin-left: 25%;
     margin-right: 25%;
+    animation-delay: 2s;
+    animation: entrance 2s ease 0s 1 normal none, oscilate1 1.5s ease 2.5s 1 normal forwards, oscilate2 4s ease 3.8s infinite normal none;
 }
 
 .submit-div {
@@ -38,4 +42,38 @@ select {
 
 select:focus {
     border: 3px solid rgba(73, 12, 92, 0.801);
+}
+
+@keyframes entrance {
+    0% {
+        transform: scale(0);
+    }
+
+    100% {
+        transform: scale(1);
+    }
+}
+
+@keyframes oscilate1 {
+    0% {
+        left: 0px;
+    }
+
+    100% {
+        left: 50px;
+    }
+}
+
+@keyframes oscilate2 {
+    0% {
+        left: 50px;
+    }
+
+    50% {
+        left: -50px;
+    }
+
+    100% {
+        left: 50px;
+    }
 }

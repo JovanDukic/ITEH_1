@@ -4,7 +4,7 @@ $(document).ready(function () {
 
     $("#search").keyup(function () {
         reset();
-        sendSearchRequest($("#search").val());
+        sendSearchRequest($("#search").val(), $("#filterValue").val());
     });
 
     $("#sortDate").click(function () {
@@ -59,11 +59,11 @@ $(document).ready(function () {
         });
     }
 
-    sendSearchRequest = function ($text) {
+    sendSearchRequest = function ($text, $filter) {
         request = $.ajax({
             url: "../handler/search.php",
             type: "POST",
-            data: "text=" + $text,
+            data: "text=" + $text + "&filter=" + $filter,
             dataType: "json",
             success: function (data) {
                 console.log(data);
@@ -77,9 +77,9 @@ $(document).ready(function () {
 
     convert = function (testID) {
         switch (testID) {
-            case "1":
+            case 1:
                 return "quick";
-            case "2":
+            case 2:
                 return "pcr";
             default:
                 return "error";

@@ -27,7 +27,7 @@
     width: 75%;
 }
 
-select {
+#gender {
     border: 3px solid rgb(255, 255, 255);
     background-color: white;
     -webkit-border-radius: 10px;
@@ -36,6 +36,6 @@ select {
     padding: 5px;
 }
 
-select:focus {
+#gender:focus {
     border: 3px solid rgba(73, 12, 92, 0.801);
 }

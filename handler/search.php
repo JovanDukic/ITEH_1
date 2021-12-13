@@ -5,8 +5,8 @@ require "../entity/Controller.php";
 
 session_start();
 
-if (isset($_SESSION["controller"]) && isset($_POST["text"])) {
+if (isset($_SESSION["controller"]) && isset($_POST["text"]) && isset($_POST["filter"])) {
     $controller = $_SESSION["controller"];
-    $controller->searchForUserTests($_POST["text"], $_SESSION["ID"], $connection);
+    $controller->searchForUserTests($_POST["text"], $_POST["filter"], $_SESSION["ID"], $connection);
     echo json_encode($controller->userTests);
 }

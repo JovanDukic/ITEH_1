@@ -10,6 +10,7 @@ body {
     font-family: sans-serif;
     font-weight: 100;
     min-height: 100vh;
+    padding-bottom: 1%;
 }
 
 .container {

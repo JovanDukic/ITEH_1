@@ -47,10 +47,18 @@ if (isset($_SESSION["ID"])) {
         <div class="toolbar">
             <div class="ambulanceFilter">
                 <div>
-                    <label for="search">Ambulance filter: </label>
+                    <label for="search">Filter:</label>
                 </div>
                 <div class="search">
                     <input type="text" name="search" id="search">
+                </div>
+                <div class="filter">
+                    <select id="filterValue">
+                        <option value="date">Date</option>
+                        <option value="testID">Type</option>
+                        <option value="ambulance">Ambulance</option>
+                        <option value="result">Result</option>
+                    </select>
                 </div>
             </div>
 

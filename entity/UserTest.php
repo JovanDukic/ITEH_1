@@ -32,9 +32,15 @@ class UserTest
 
     public static function loadUserTests($userID, mysqli $connection)
     {
-        $query = "SELECT * FROM UserTest WHERE userID = '$userID'";
+        $query = "SELECT * FROM UserTest WHERE userID = ?";
 
-        $rs = $connection->query($query);
+        $stmt = $connection->prepare($query);
+
+        $stmt->bind_param("i", $userID);
+
+        $stmt->execute();
+
+        $rs = $stmt->get_result();
 
         $userTests = array();
 
@@ -52,11 +58,25 @@ class UserTest
         return rand(1, 100) % 2 == 0 ? "positive" : "negative";
     }
 
-    public static function search($text, $userID, mysqli $connection)
+    public static function search($text, $filter, $userID, mysqli $connection)
     {
-        $query = "SELECT * FROM UserTest WHERE ambulance LIKE '%$text%' AND userID = '$userID'";
+        $query = null;
 
-        $rs = $connection->query($query);
+        if ($filter == "testID") {
+            $query = "SELECT * FROM UserTest u INNER JOIN CovidTest t ON u.testID = t.ID where t.type LIKE ? AND u.userID = ?";
+        } else {
+            $query = "SELECT * FROM UserTest WHERE $filter LIKE ? AND userID = ?";
+        }
+
+        $var = "%$text%";
+
+        $stmt = $connection->prepare($query);
+
+        $stmt->bind_param("si", $var, $userID);
+
+        $stmt->execute();
+
+        $rs = $stmt->get_result();
 
         $userTests = array();
 

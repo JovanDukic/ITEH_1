@@ -20,8 +20,8 @@ if (!isset($_SESSION["ID"])) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Testing</title>
 
-    <link rel="stylesheet" href="../css/test.css">
     <link rel="stylesheet" href="../css/styles.css">
+    <link rel="stylesheet" href="../css/test.css">
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="../js/test.js"></script>
@@ -54,7 +54,7 @@ if (!isset($_SESSION["ID"])) {
                     </div>
 
                     <div class="test-part">
-                        <label for="fast">fast-test</label>
+                        <label for="fast">quick-test</label>
                         <input type="radio" name="type" id="quick" value="quick">
                     </div>
                 </div>
@@ -65,7 +65,7 @@ if (!isset($_SESSION["ID"])) {
                     </div>
 
                     <div class="test-part">
-                        <select name="ambulance">
+                        <select name="ambulance" id="ambulance">
                             <option value="A-ambulance">A-ambulance</option>
                             <option value="B-ambulance">B-ambulance</option>
                             <option value="C-ambulance">C-ambulance</option>

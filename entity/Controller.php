@@ -41,9 +41,9 @@ class Controller
         return User::getUser($userID, $connection);
     }
 
-    public function searchForUserTests($text, $userID, mysqli $connection)
+    public function searchForUserTests($text, $filter, $userID, mysqli $connection)
     {
-        $this->userTests = UserTest::search($text, $userID, $connection);
+        $this->userTests = UserTest::search($text, $filter, $userID, $connection);
     }
 
     public function sortUserTests($flag)

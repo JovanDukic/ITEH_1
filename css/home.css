@@ -16,6 +16,23 @@
     margin-left: 1%;
 }
 
+.filter {
+    margin-left: 1%;
+}
+
+select {
+    border: 3px solid rgb(255, 255, 255);
+    background-color: white;
+    -webkit-border-radius: 10px;
+    font-size: 1.1em;
+    border-radius: 10px;
+    padding: 5px;
+}
+
+select:focus {
+    border: 3px solid rgba(73, 12, 92, 0.801);
+}
+
 .other {
     font-size: 1.2em;
     display: flex;
