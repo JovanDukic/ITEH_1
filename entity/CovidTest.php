@@ -45,7 +45,7 @@ class CovidTest
     {
         switch ($type) {
             case "quick":
-                return 1;
+                return "1";
             case "pcr":
                 return "2";
             default:

@@ -21,8 +21,7 @@ $(document).ready(function () {
 
         request.done(function (response, textStatus, jqXHR) {
             if (response == "success") {
-                window.location.href = "../pages/home.php";
-                // redirectRequest();
+                document.location.href = "../pages/home.php";
             } else {
                 alert("User does not exist!");
             }

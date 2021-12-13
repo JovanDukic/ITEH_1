@@ -5,11 +5,26 @@
     padding: 0;
 }
 
+body {
+    background: linear-gradient(45deg, #49a09d, #5f2c82);
+    font-family: sans-serif;
+    font-weight: 100;
+    min-height: 100vh;
+}
+
+.container {
+    margin-left: 10%;
+    margin-right: 10%;
+    margin-bottom: 10%;
+    justify-items: center;
+}
+
 .navbar {
     display: flex;
     justify-content: center;
     overflow: hidden;
-    background-color: hsl(0, 75%, 40%);
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+    background-color: #414e86;
     position: fixed;
     top: 0;
     left: 0;
@@ -17,6 +32,7 @@
 }
 
 .navbar a {
+    font-size: 1.3em;
     float: left;
     display: block;
     color: white;
@@ -26,11 +42,73 @@
 }
 
 .navbar a:hover {
-    background-color: hsl(249, 100%, 22%);
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+    background-color: #6f48b9;
 }
 
-.footer {
-    background-color: hsl(0, 75%, 40%);
-    width: 100%;
-    height: 50px;
+.title {
+    margin-top: 10%;
+    margin-bottom: 7%;
+    text-align: center;
+    font-size: 6em;
+    color: #fff;
+    box-shadow: 0 5px 25px rgba(0, 0, 0, 0.2);
+}
+
+#submit {
+    background-color: rgba(16, 15, 97, 0.801);
+    box-shadow: 0 5px 25px rgba(0, 0, 0, 0.2);
+    color: #fff;
+    border: none;
+    font-size: 1.5em;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    transition-duration: 0.4s;
+    cursor: pointer;
+
+    padding: 5px 15px;
+    cursor: pointer;
+    -webkit-border-radius: 10px;
+    border-radius: 10px;
+}
+
+#submit:hover {
+    background-color: rgba(97, 15, 15, 0.801);
+}
+
+input[type="text"] {
+    all: initial;
+    font-family: sans-serif;
+    font-weight: 100;
+    border: 3px solid rgb(255, 255, 255);
+    background-color: white;
+    -webkit-border-radius: 10px;
+    font-size: 1.1em;
+    width: 200px;
+    height: 30px;
+    border-radius: 10px;
+    padding: 5px;
+}
+
+input[type="text"]:focus {
+    border: 3px solid rgba(73, 12, 92, 0.801);
+}
+
+input[type="password"] {
+    all: initial;
+    font-family: sans-serif;
+    font-weight: 100;
+    border: 3px solid rgb(255, 255, 255);
+    background-color: white;
+    -webkit-border-radius: 10px;
+    font-size: 1.1em;
+    width: 200px;
+    height: 30px;
+    border-radius: 10px;
+    padding: 5px;
+}
+
+input[type="password"]:focus {
+    border: 3px solid rgba(73, 12, 92, 0.801);
 }

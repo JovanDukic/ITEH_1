@@ -51,4 +51,21 @@ class UserTest
     {
         return rand(1, 100) % 2 == 0 ? "positive" : "negative";
     }
+
+    public static function search($text, $userID, mysqli $connection)
+    {
+        $query = "SELECT * FROM UserTest WHERE ambulance LIKE '%$text%' AND userID = '$userID'";
+
+        $rs = $connection->query($query);
+
+        $userTests = array();
+
+        if (!empty($rs) && $rs->num_rows > 0) {
+            while ($row = $rs->fetch_array()) {
+                array_push($userTests, new UserTest($row["ID"], $row["userID"], $row["testID"], $row["date"], $row["ambulance"], $row["result"]));
+            }
+        }
+
+        return $userTests;
+    }
 }
