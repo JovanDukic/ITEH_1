@@ -88,6 +88,8 @@ $(document).ready(function () {
                 alert("Changes have been saved!");
             } else if (response == "exists") {
                 alert("Username is alredy taken!");
+            } else if ("nothing") {
+                return;
             } else {
                 alert("Saving changes has failed!");
             }

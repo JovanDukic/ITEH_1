@@ -25,6 +25,7 @@ if (isset($_SESSION["ID"])) {
 
     <link rel="stylesheet" href="../css/profile.css">
     <link rel="stylesheet" href="../css/styles.css">
+    <link rel="icon" type="image/x-icon" href="../assets/favicon.png">
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="../js/profile.js"></script>

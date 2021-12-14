@@ -28,6 +28,7 @@ if (isset($_SESSION["ID"])) {
     <link rel="stylesheet" href="../css/home.css">
     <link rel="stylesheet" href="../css/link.css">
     <link rel="stylesheet" href="../css/styles.css">
+    <link rel="icon" type="image/x-icon" href="../assets/favicon.png">
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="../js/adminUserTests.js"></script>

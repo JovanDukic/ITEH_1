@@ -22,6 +22,7 @@ if (!isset($_SESSION["ID"])) {
 
     <link rel="stylesheet" href="../css/styles.css">
     <link rel="stylesheet" href="../css/test.css">
+    <link rel="icon" type="image/x-icon" href="../assets/favicon.png">
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="../js/test.js"></script>
