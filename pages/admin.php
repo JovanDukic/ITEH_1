@@ -5,9 +5,8 @@ require "../entity/Controller.php";
 
 session_start();
 
-if (isset($_SESSION["ID"])) {
-    Controller::getController()->loadUserTests($_SESSION["ID"], $connection);
-    Controller::getController()->loadCovidTests($connection);
+if (isset($_SESSION["ID"]) && isset($_SESSION["admin"])) {
+    Controller::getController()->loadUsers($connection);
     $_SESSION["controller"] = Controller::getController();
 } else {
     header("Location: ../pages/login.html");
@@ -22,27 +21,27 @@ if (isset($_SESSION["ID"])) {
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Homepage</title>
+    <title>Admin</title>
 
     <link rel="stylesheet" href="../css/home.css">
+    <link rel="stylesheet" href="../css/link.css">
     <link rel="stylesheet" href="../css/styles.css">
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script src="../js/home.js"></script>
+    <script src="../js/admin.js"></script>
     <script src="../js/logout.js"></script>
+
 </head>
 
 <body>
 
     <div class="navbar">
-        <a href="test.php">TESTING</a>
-        <a href="profile.php">PROFILE</a>
         <a href="#" id="logout">LOGOUT</a>
     </div>
 
     <div class="container">
 
-        <div class="title">Test results</div>
+        <div class="title">Users</div>
 
         <div class="toolbar">
             <div class="ambulanceFilter">
@@ -54,10 +53,10 @@ if (isset($_SESSION["ID"])) {
                 </div>
                 <div class="filter">
                     <select id="filterValue">
-                        <option value="date">Date</option>
-                        <option value="testID">Type</option>
-                        <option value="ambulance">Ambulance</option>
-                        <option value="result">Result</option>
+                        <option value="firstname">Firstname</option>
+                        <option value="lastname">Lastname</option>
+                        <option value="age">Age</option>
+                        <option value="gender">Gender</option>
                     </select>
                 </div>
             </div>
@@ -68,23 +67,23 @@ if (isset($_SESSION["ID"])) {
                 </div>
 
                 <div class="part">
-                    <label for="sortDate">date</label>
-                    <input type="checkbox" name="sortDate" id="sortDate">
+                    <label for="sortFirstname">firstname</label>
+                    <input type="checkbox" name="sortFirstname" id="sortFirstname">
                 </div>
 
                 <div class="part">
-                    <label for="sortType">type</label>
-                    <input type="checkbox" name="sortType" id="sortType">
+                    <label for="sortLastname">lastname</label>
+                    <input type="checkbox" name="sortLastname" id="sortLastname">
                 </div>
 
                 <div class="part">
-                    <label for="sortAmbulance">ambulance</label>
-                    <input type="checkbox" name="sortAmbulance" id="sortAmbulance">
+                    <label for="sortAge">age</label>
+                    <input type="checkbox" name="sortAge" id="sortAge">
                 </div>
 
                 <div class="part">
-                    <label for="sortResult">result</label>
-                    <input type="checkbox" name="sortResult" id="sortResult">
+                    <label for="sortGender">gender</label>
+                    <input type="checkbox" name="sortGender" id="sortGender">
                 </div>
             </div>
         </div>
@@ -94,24 +93,24 @@ if (isset($_SESSION["ID"])) {
 
                 <thead>
                     <tr>
-                        <th>TestID</th>
-                        <th>UserID</th>
-                        <th>Date</th>
-                        <th>Type</th>
-                        <th>Ambulance</th>
-                        <th>Result</th>
+                        <th>ID</th>
+                        <th>Firstname</th>
+                        <th>Lastname</th>
+                        <th>Age</th>
+                        <th>Gender</th>
+                        <th>Action</th>
                     </tr>
                 </thead>
 
                 <tbody>
-                    <?php foreach (Controller::getController()->userTests as $userTest => $value) { ?>
+                    <?php foreach (Controller::getController()->users as $user => $value) { ?>
                         <tr>
                             <td><?php echo $value->ID ?></td>
-                            <td><?php echo $value->userID ?></td>
-                            <td><?php echo $value->date ?></td>
-                            <td><?php echo CovidTest::getTypeFromID($value->testID) ?></td>
-                            <td><?php echo $value->ambulance ?></td>
-                            <td><?php echo $value->result ?></td>
+                            <td><?php echo $value->firstname ?></td>
+                            <td><?php echo $value->lastname ?></td>
+                            <td><?php echo $value->age ?></td>
+                            <td><?php echo $value->gender ?></td>
+                            <td><a href="#" class="delete">DELETE</a></td>
                         </tr>
                     <?php } ?>
                 </tbody>

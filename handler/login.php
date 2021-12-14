@@ -13,7 +13,14 @@ if (isset($_POST["username"]) && isset($_POST["password"])) {
     if (!empty($rs) && $rs->num_rows > 0) {
         while ($row = $rs->fetch_array()) {
             $_SESSION["ID"] = $row["ID"];
-            echo "success";
+
+            if ($_POST["username"] == "admin" && $_POST["password"] == "admin") {
+                $_SESSION["admin"] = true;
+                echo "admin";
+                exit();
+            }
+
+            echo "user";
         }
     } else {
         echo "failed";

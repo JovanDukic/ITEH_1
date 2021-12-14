@@ -20,8 +20,10 @@ $(document).ready(function () {
         });
 
         request.done(function (response, textStatus, jqXHR) {
-            if (response == "success") {
+            if (response == "user") {
                 document.location.href = "../pages/home.php";
+            } else if (response == "admin") {
+                document.location.href = "../pages/admin.php";
             } else {
                 alert("User does not exist!");
             }
@@ -29,12 +31,6 @@ $(document).ready(function () {
 
         request.fail(function (jqXHR, textStatus, error) {
             alert("Error has occurred: " + error);
-        });
-    };
-
-    redirectRequest = function () {
-        request = $.ajax({
-            url: "../handler/redirect.php",
         });
     };
 

@@ -2,6 +2,10 @@ $(document).ready(function () {
 
     var val = "";
 
+    $("#table1").on("click", "a", function () {
+        sendDeleteRequest($(this).closest("tr").find('td:eq(0)').text());
+    });
+
     $("#search").keyup(function () {
         reset();
         sendSearchRequest($("#search").val(), $("#filterValue").val());
@@ -42,6 +46,23 @@ $(document).ready(function () {
         }
         sendSortRequest(val);
     });
+
+    sendDeleteRequest = function ($testID) {
+        request = $.ajax({
+            url: "../handler/adminDeleteUserTest.php",
+            type: "POST",
+            data: "testID=" + $testID,
+            dataType: "json",
+            success: function (data) {
+                console.log(data);
+                alert("Test has been deleted!");
+                fillTable(data);
+            },
+            error: function (jqXHR, exception) {
+                alert("Error occurred!");
+            }
+        });
+    };
 
     sendSortRequest = function ($flag) {
         request = $.ajax({
@@ -87,9 +108,9 @@ $(document).ready(function () {
     };
 
     fillTable = function (data) {
-        $("#table > tbody").html("");
+        $("#table1 > tbody").html("");
         data.forEach(element => {
-            $('#table').append(
+            $('#table1').append(
                 "<tr>" +
                 "<td>" + element["ID"] + "</td>" +
                 "<td>" + element["userID"] + "</td>" +
@@ -97,6 +118,7 @@ $(document).ready(function () {
                 "<td>" + convert(element["testID"]) + "</td>" +
                 "<td>" + element["ambulance"] + "</td>" +
                 "<td>" + element["result"] + "</td>" +
+                "<td><a href = " + "'#'" + " class =" + "'delete'" + ">DELETE</a></td>" +
                 "</tr>"
             );
         });

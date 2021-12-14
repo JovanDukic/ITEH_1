@@ -6,9 +6,10 @@ require "../entity/Controller.php";
 session_start();
 
 if (isset($_SESSION["ID"])) {
-    Controller::getController()->loadUserTests($_SESSION["ID"], $connection);
+    Controller::getController()->loadUserTests($_SESSION["userID"], $connection);
     Controller::getController()->loadCovidTests($connection);
     $_SESSION["controller"] = Controller::getController();
+    $user = Controller::getController()->loadUser($_SESSION["userID"], $connection);
 } else {
     header("Location: ../pages/login.html");
 }
@@ -22,27 +23,27 @@ if (isset($_SESSION["ID"])) {
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Homepage</title>
+    <title>User tests</title>
 
     <link rel="stylesheet" href="../css/home.css">
+    <link rel="stylesheet" href="../css/link.css">
     <link rel="stylesheet" href="../css/styles.css">
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script src="../js/home.js"></script>
+    <script src="../js/adminUserTests.js"></script>
     <script src="../js/logout.js"></script>
 </head>
 
 <body>
 
     <div class="navbar">
-        <a href="test.php">TESTING</a>
-        <a href="profile.php">PROFILE</a>
+        <a href="admin.php">HOMEPAGE</a>
         <a href="#" id="logout">LOGOUT</a>
     </div>
 
     <div class="container">
 
-        <div class="title">Test results</div>
+        <div class="title">User: <?php echo $user->firstname . " " . $user->lastname ?></div>
 
         <div class="toolbar">
             <div class="ambulanceFilter">
@@ -90,7 +91,7 @@ if (isset($_SESSION["ID"])) {
         </div>
 
         <div class="data">
-            <table id="table">
+            <table id="table1">
 
                 <thead>
                     <tr>
@@ -100,6 +101,7 @@ if (isset($_SESSION["ID"])) {
                         <th>Type</th>
                         <th>Ambulance</th>
                         <th>Result</th>
+                        <th>Action</th>
                     </tr>
                 </thead>
 
@@ -112,6 +114,7 @@ if (isset($_SESSION["ID"])) {
                             <td><?php echo CovidTest::getTypeFromID($value->testID) ?></td>
                             <td><?php echo $value->ambulance ?></td>
                             <td><?php echo $value->result ?></td>
+                            <td><a href="#" class="delete">DELETE</a></td>
                         </tr>
                     <?php } ?>
                 </tbody>

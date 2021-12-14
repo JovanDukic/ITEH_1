@@ -47,26 +47,32 @@ if (isset($_SESSION["ID"])) {
             <div class="content">
 
                 <label for="search">Username: </label>
-                <input type="text" name="username" id="username" value="<?php echo $user->username ?>">
+                <input type="text" name="username" id="username" value="<?php echo $user->username ?>" disabled>
+                <input type="checkbox" value="usernameBox" id="usernameBox">
 
                 <label for="search">Password: </label>
-                <input type="password" name="password" id="password" value="<?php echo $user->password ?>" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters">
+                <input type="password" name="password" id="password" value="<?php echo $user->password ?>" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters" disabled>
+                <input type="checkbox" value="passwordBox" id="passwordBox">
 
                 <label for="search">Firsname: </label>
-                <input type="text" name="firstname" id="firstname" value="<?php echo $user->firstname ?>">
+                <input type="text" name="firstname" id="firstname" value="<?php echo $user->firstname ?>" disabled>
+                <input type="checkbox" value="firstnameBox" id="firstnameBox">
 
                 <label for="search">Lastname: </label>
-                <input type="text" name="lastname" id="lastname" value="<?php echo $user->lastname ?>">
+                <input type="text" name="lastname" id="lastname" value="<?php echo $user->lastname ?>" disabled>
+                <input type="checkbox" value="lastnameBox" id="lastnameBox">
 
                 <label for="search">Age: </label>
-                <input type="text" name="age" id="age" value="<?php echo $user->age ?>">
+                <input type="text" name="age" id="age" value="<?php echo $user->age ?>" disabled>
+                <input type="checkbox" value="ageBox" id="ageBox">
 
                 <label for="gender">Gender:</label>
-                <select name="gender" id="gender">
+                <select name="gender" id="gender" disabled>
                     <?php foreach ($gender as $g) { ?>
                         <option value="<?php echo $g ?>" <?php if ($g == $user->gender) echo "selected" ?>><?php echo $g ?></option>
                     <?php } ?>
                 </select>
+                <input type="checkbox" value="genderBox" id="genderBox">
 
                 <div class="submit-div">
                     <input type="submit" name="submit" id="submit" value="SAVE">

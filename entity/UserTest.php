@@ -88,4 +88,11 @@ class UserTest
 
         return $userTests;
     }
+
+    public static function deleteTest($userID, $testID, mysqli $connection)
+    {
+        $query = "DELETE FROM UserTest WHERE userID = '$userID' AND ID = '$testID'";
+
+        return $connection->query($query);
+    }
 }
